@@ -1,0 +1,86 @@
+{
+    "http://ampparit.com": {
+        "added": "1487422018",
+        "checked": 1487527988,
+        "hash": "384:NYGAJfkXMub2a92Av+SE6cJyxFL5minh+PZNMAq4N51aEaXuPu6OtwsJSd:NsJcXMuC2vv+Jyz5mih0NJj1jsM5mtJi",
+        "reference": 1,
+        "size": 21151
+    },
+    "http://kirjuri.kurittu.org": {
+        "added": "1487422083",
+        "checked": 1487527988,
+        "hash": "192:BR5I6J5JA+0SivKeLvA4gbxbFkcVdfWQiW4dhAAgcuX7y:26JPA+/QVLv2bxxXVoW43AA2Ly",
+        "reference": 2,
+        "size": 7899
+    },
+    "http://stackoverflow.com": {
+        "added": "1487422038",
+        "checked": 1487527989,
+        "hash": "384:lyl5hZcCZNlhzsievZWQSYWkoklYSbq5DYxQSPQmal33f2su0V5K:ly38+ZavZW4fnlYSm5DY9ImaFP2shK",
+        "reference": 3,
+        "size": 31672
+    },
+    "http://twitter.com": {
+        "added": "1487422027",
+        "checked": 1487527990,
+        "hash": "192:hgIRAX9GpBGpjGph7NUbtbY4mJB7BCDz+7FA8x9svjbRZKQhAJ2X71PuQ/L/Pd:hgX9WY87NEbY4kB7BFA8Wj9ZDhAKPuyN",
+        "reference": 4,
+        "size": 11458
+    },
+    "http://www.facebook.com": {
+        "added": "1487420082",
+        "checked": 1487528060,
+        "hash": "1536:Kxml8RgN7Td4q3cmpgN7Td4q3cm98Arf3bbkeqsys/Ji1BN:SV98Arf3bbkeqsyxBN",
+        "reference": 5,
+        "size": 75484
+    },
+    "http://www.github.com": {
+        "added": "1487420074",
+        "checked": 1487527991,
+        "hash": "48:zgkZyGZUH5D4wwnDsIIs2dV7MefUHh/U0DIc:z1ZyGZs5cnDsfRdV7MefcaY",
+        "reference": 6,
+        "size": 2659
+    },
+    "http://www.kela.fi": {
+        "added": "1487436556",
+        "checked": 1487527993,
+        "hash": "384:feAYVUfvFvc+A0JL0LnYmuAcjii/nPlDRbXQXqlCQI/hJQdQrfGFfyfnQGgvWFvI:fQVUfvFvc+A0JL0zz8WifR10qMQI/hJG",
+        "reference": 7,
+        "size": 20716
+    },
+    "http://www.yle.fi": {
+        "added": "1487528076",
+        "checked": "1487528076",
+        "hash": "1536:Q/BX4MOhgQnIb3FKEfLHuL3Ej1he30R8wXOR:S3FBf23EJh0cN8",
+        "reference": 8,
+        "size": 97530
+    },
+    "http://yle.fi": {
+        "added": "1487420679",
+        "checked": 1487527994,
+        "hash": "1536:Q/BX4MOhgQnIb3FKEfLHuL3Ej1he30MqSklOR:S3FBf23EJh0HPku",
+        "reference": 9,
+        "size": 96498
+    },
+    "https://kurittu.org": {
+        "added": "1487420090",
+        "checked": 1487527994,
+        "hash": "3:UhvfWY+auY+cetyWsMgBPPw5BLLS2MBqIUdcWmIPL2NcRdn9UAGg0LAS5b5QHJeU:U5uYJctBsJ5Y5E2AqI5aqNuzGNF56aG",
+        "reference": 10,
+        "size": 208
+    },
+    "https://www.poliisi.fi": {
+        "added": "1487436529",
+        "checked": 1487527995,
+        "hash": "384:kSCVOGF6nbQMdscoXMdscowB8HktrjWh80GFDAPvWvkZ6qF+1nrhJ6yUY/aP:Msf+1P1A8HktrrDFDk6qF+1d4HY0",
+        "reference": 11,
+        "size": 16879
+    },
+    "https://www.viestintavirasto.fi": {
+        "added": "1487436522",
+        "checked": 1487527995,
+        "hash": "384:fDc1CgOyjwiuEPHVFqm1cU1jEDznnL7q9JY2JfSPh+Z0u6a3SxpOi3Sv+f3Zv6+D:fA1CgOyjwiuA51jEnnnL78DSPBtacpdH",
+        "reference": 12,
+        "size": 22633
+    }
+}
