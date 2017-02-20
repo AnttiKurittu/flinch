@@ -1,5 +1,9 @@
 # flinch
-Flinch.py checks a list of websites for changes. Flinch runs with Python3 and required ```ssdeep```, ```requests``` and ```BeatifulSoup4```
+Flinch.py checks a list of websites for changes. Flinch runs with Python3 and requires ```ssdeep```, ```requests``` and ```BeatifulSoup4```
+
+You can install the following packages using ```pip install ssdeep requests bs4```
+
+On some systems you might need to install dependencies like the ```ssdeep``` library and the ```cffi``` and ```pycparser``` pip packages.
 
 Run ```python3 flinch.py -h``` for help.
 
