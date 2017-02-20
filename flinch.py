@@ -33,7 +33,11 @@ class c:
 def get_page(url):
     try:
         headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36'}
-        page_object = requests.get(url, headers=headers)
+        if arg.proxy:
+            proxies = {"http": arg.proxy, "https": arg.proxy}
+            page_object = requests.get(url, headers=headers, proxies=proxies)
+        else:
+            page_object = requests.get(url, headers=headers)
         status_code = str(page_object.status_code)
         if str(status_code)[0] == "2":
             status_code = c.G + status_code + c.END
@@ -46,6 +50,7 @@ def get_page(url):
     except:
         #print("Error requesting page:", sys.exc_info()[0])
         return False
+
 
 parser = argparse.ArgumentParser(description="Flinch.py watches URLs for changes using a fuzzy hashing algorithm (ssdeep). To reset an URL's baseline, add it again with -a. (C) Antti Kurittu 2017.")
 parser.add_argument("-a",
@@ -64,6 +69,12 @@ parser.add_argument("-l",
                     "--list",
                     help="List watched urls and quit",
                     action="store_true")
+
+parser.add_argument("-p",
+                    "--proxy",
+                    metavar='address',
+                    type=str,
+                    help="Set http/https proxy (address:port)")
 
 parser.add_argument("-u",
                     "--url",
@@ -201,8 +212,8 @@ def main():
             if arg.head:
                 print(c.BOLD + "  DOCUMENT HEAD (truncated to 80 characters):" + c.END)
                 print("    ------------------------------------------------------------")
-                i = 1
-                while i <= arg.head:
+                i = 0
+                while i < arg.head:
                     print(c.D + "    " + headlines[i][0:80] + c.END)
                     i = i + 1
                 print("    ------------------------------------------------------------")
