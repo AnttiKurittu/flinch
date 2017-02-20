@@ -39,13 +39,14 @@ def get_page(url):
         else:
             page_object = requests.get(url, headers=headers)
         status_code = str(page_object.status_code)
+        page_size = len(page_object.content)
         if str(status_code)[0] == "2":
             status_code = c.G + status_code + c.END
         elif str(status_code)[0] == "4":
             status_code = c.Y + status_code + c.END
         elif str(status_code)[0] == "5":
             status_code = c.R + status_code + c.END
-        data = [page_object.text.encode('utf8'), status_code, page_object.headers]
+        data = [page_object.text.encode('utf8'), status_code, page_object.headers, page_size]
         return data
     except:
         #print("Error requesting page:", sys.exc_info()[0])
@@ -135,11 +136,13 @@ def main():
             exit()
         soup = BeautifulSoup(page[0], "html.parser")
         page[0] = ''.join(soup.findAll(text=True))
+        page[0] = "".join(page[0].split())
         page_title = soup.title.string
-        page_size = len(page[0])
+        page_title = ' '.join(page_title.split())
+        
         current_hash = ssdeep.hash(page[0])
         urls[arg.add]['hash'] = current_hash
-        urls[arg.add]['size'] = page_size
+        urls[arg.add]['size'] = page[3]
         print(c.G + " + New url added: " + c.END + arg.add + " (" + current_hash + ")")
 
     #List or remove an url from the watchlist
@@ -182,10 +185,10 @@ def main():
             headlines = page[0].decode("utf-8").splitlines()
             soup = BeautifulSoup(page[0], "html.parser")
             page[0] = ''.join(soup.findAll(text=True))
+            page[0] = "".join(page[0].split())
             page_title = str(soup.title.string).replace('\r', '').replace('\n', '')
-            ' '.join(page_title.split())
-            page_size = len(page[0])
-            size_difference = page_size - entries['size']
+            page_title = ' '.join(page_title.split())
+            size_difference = page[3] - entries['size']
             if size_difference == 0:
                 size_difference = ""
             elif size_difference > 0:
@@ -196,15 +199,15 @@ def main():
             print(c.G + str(entries['reference']) + c.END + ": [HTTP " + str(page[1]) + "] " + url + ": " + c.BOLD + page_title + c.END + "")
             comparison_score = ssdeep.compare(entries['hash'], current_hash)
             if comparison_score == 100:
-                print(c.G + "  ➤ Content identical [" + str(comparison_score) + "%]" + c.END + "\t\t[size " + str(page_size) + " " + str(size_difference) + "bytes]")
+                print(c.G + "  ➤ Content identical [" + str(comparison_score) + "%]" + c.END + "\t\t[size " + str(page[3]) + " " + str(size_difference) + "bytes]")
             elif 75 <= comparison_score <= 99:
-                print(c.G + "  ➤ Content similar [" + str(comparison_score) + "%]" + c.END + "\t\t[size " + str(page_size) + " " + str(size_difference) + "bytes]")
+                print(c.G + "  ➤ Content similar [" + str(comparison_score) + "%]" + c.END + "\t\t[size " + str(page[3]) + " " + str(size_difference) + "bytes]")
             elif 50 <= comparison_score <= 74:
-                print(c.Y + "  ➤ Content different [" + str(comparison_score) + "%]" + c.END + "\t\t[size " + str(page_size) + " " + str(size_difference) + "bytes]")
+                print(c.Y + "  ➤ Content different [" + str(comparison_score) + "%]" + c.END + "\t\t[size " + str(page[3]) + " " + str(size_difference) + "bytes]")
             elif 25 <= comparison_score <= 49:
-                print(c.Y + "  ➤ Content very different [" + str(comparison_score) + "%]" + c.END + "\t\t[size " + str(page_size) + " " + str(size_difference) + "bytes]")
+                print(c.Y + "  ➤ Content very different [" + str(comparison_score) + "%]" + c.END + "\t\t[size " + str(page[3]) + " " + str(size_difference) + "bytes]")
             elif 0 <= comparison_score <= 24:
-                print(c.R + "  ➤ Content completely different [" + str(comparison_score) + "%]\t\t" + c.END + "[size " + str(page_size) + " " + str(size_difference) + "bytes]")
+                print(c.R + "  ➤ Content completely different [" + str(comparison_score) + "%]\t\t" + c.END + "[size " + str(page[3]) + " " + str(size_difference) + "bytes]")
             if arg.headers is True:
                 print(c.BOLD + "  HTTP RESPONSE HEADERS:" + c.END)
                 for header, value in page[2].items():
