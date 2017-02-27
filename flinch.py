@@ -101,6 +101,10 @@ parser.add_argument("-e",
 
 arg = parser.parse_args()
 
+# Set the location for file to store urls that are being trackes.
+# Default is in the same folder.
+urls_location = 'urls.txt'
+
 if not len(sys.argv) > 1:
     arg.list = True
 
@@ -111,8 +115,8 @@ def main():
     print(c.BOLD + "Flinch.py - see -h for help and command line options\n" + c.END)
 
     # Read watchlist, create an empty list if file does not exist
-    if os.path.exists('urls.txt'):
-        f = open('urls.txt', 'r')
+    if os.path.exists(urls_location):
+        f = open(urls_location, 'r')
         urls = f.read()
         f.close()
     else:
@@ -220,7 +224,7 @@ def main():
                     print(c.D + "    " + headlines[i][0:80] + c.END)
                     i = i + 1
                 print("    ------------------------------------------------------------")
-    f = open('urls.txt', 'w')
+    f = open(urls_location, 'w')
     f.write(json.dumps(urls, sort_keys=True, indent=4, separators=(',', ': ')))
     f.close()
 
