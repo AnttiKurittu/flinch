@@ -141,8 +141,11 @@ def main():
         soup = BeautifulSoup(page[0], "html.parser")
         page[0] = ''.join(soup.findAll(text=True))
         page[0] = "".join(page[0].split())
-        page_title = soup.title.string
-        page_title = ' '.join(page_title.split())
+        if soup.title:
+            page_title = soup.title.string
+            page_title = ' '.join(page_title.split())
+        else:
+            page_title = "No page title available."
         
         current_hash = ssdeep.hash(page[0])
         urls[arg.add]['hash'] = current_hash
@@ -190,8 +193,11 @@ def main():
             soup = BeautifulSoup(page[0], "html.parser")
             page[0] = ''.join(soup.findAll(text=True))
             page[0] = "".join(page[0].split())
-            page_title = str(soup.title.string).replace('\r', '').replace('\n', '')
-            page_title = ' '.join(page_title.split())
+            if soup.title:
+                page_title = str(soup.title.string).replace('\r', '').replace('\n', '')
+                page_title = ' '.join(page_title.split())
+            else:
+                page_title = "No page title available."
             size_difference = page[3] - entries['size']
             if size_difference == 0:
                 size_difference = ""
